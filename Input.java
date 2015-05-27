@@ -47,8 +47,6 @@ public class Input extends JFrame{
         
         mainPanel.add(hp);
         add(mainPanel, CENTER);
-        
-        
     }
     /**
      * HOME, INFO...
@@ -73,7 +71,7 @@ public class Input extends JFrame{
                 break;
             }
             case 2:{
-                ep = new EditPanel(this, dip.getProduct());
+                ep = new EditPanel(this, product);
                 ep.setUPC(hp.getUPC());
                 mainPanel.add(ep);
                 break;
