@@ -1,6 +1,6 @@
-<h1># ScanENVY<h1>
+# ScanENVY
 <h2>Recycle App<h2><br>
--<p>Scan Barcodes<br>
--<p>Lookpup Barcodes<br>
--<p>Vote on how to recycle<br>
+-Scan Barcodes<br>
+-Lookpup Barcodes<br>
+-Vote on how to recycle<br>
 
