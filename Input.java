@@ -30,6 +30,7 @@ public class Input extends JFrame{
     private HomePanel hp;
     private InfoPanel dip;
     private EditPanel ep;
+    private Product product;
     private Run run;
     public static int HOME = 0;
     public static int INFO = 1;
@@ -64,7 +65,7 @@ public class Input extends JFrame{
             case 1:{
                 run = hp.getRun();
                 System.out.println(hp.getUPC());
-                Product product = run.lookUp(hp.getUPC());
+                product = run.lookUp(hp.getUPC());
                 
                 dip = new InfoPanel(this, product);//hp.getUPC() change to product
                 dip.setUPC(hp.getUPC());
