@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package scanenvy;
 
-
 /**
- * Write a description of class Barcode here.
+ * Class that holds information about a specific product
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @version 6/2/15
  */
 public class Product implements java.io.Serializable
 {
@@ -20,20 +13,16 @@ public class Product implements java.io.Serializable
     private String manufact;
     private int rType;
     
-    public Product(String code,String name,String manufact,int rType)
+    
+    public Product(String code,String name,int rType, String manufact)
     {
         upc=code;
         this.name=name;
         this.manufact=manufact;
         this.rType=rType;
     }
-    public Product(String name, String manufact,int type,String upc)
-    {
-        this.upc=upc;
-        this.name=name;
-        rType=type;
-        this.manufact=manufact;
-    }
+    
+    
     public Product(String code, String manuID)
     {
     	upc=code;
@@ -46,15 +35,17 @@ public class Product implements java.io.Serializable
     
     public Product(){
     	
-    	
     }
     
+    
+    /*
+    Getter And Setter Methods for Product Class
+    */
+    
     public String getName(){
-    	return "Example Product";
+    	return name;
     }
-    public String getRecycleType(){
-    	return "1";
-    }
+    
     public String getUpc()
     {
         return upc;

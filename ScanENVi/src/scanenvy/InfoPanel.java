@@ -152,7 +152,7 @@ public class InfoPanel extends JPanel{
         
         
         //Changed by Kir
-                int recycle = Integer.parseInt(product.getRecycleType());
+                int recycle = product.getRType();
                 switch(recycle)
                 {
                     case 1:

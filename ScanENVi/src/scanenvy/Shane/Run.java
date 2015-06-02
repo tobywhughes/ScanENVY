@@ -84,11 +84,16 @@ private String getManufacturer(String tempUpc){
 }
 
 public void loadData(){
+        
+        //#############//
+        //Test Products//
+        //#############//
+    
 	String productName = "Coca-Cola";
 	String manufacturer = "The Coca-Cola Company";
 	int type = 8;
 	String upc = "0049000006346";
-	Product product = new Product(upc, productName, manufacturer, type);
+	Product product = new Product(upc, productName, type, manufacturer);
 	search.add(product);
 
 	
@@ -97,7 +102,7 @@ public void loadData(){
 	manufacturer = "Dr. Pepper / Seven-Up Inc";
 	type= 8;
 	upc = "0078000003154";
-	Product product2 = new Product(productName, manufacturer, type, upc);
+	Product product2 = new Product(upc, productName, type, manufacturer);
 	search.add(product2);
 
 	
@@ -106,7 +111,7 @@ public void loadData(){
 	manufacturer = "Kirkland";
 	type= 1;
 	upc = "0096619756803";
-	Product product3 = new Product(productName, manufacturer, type, upc);
+	Product product3 = new Product(upc, productName, type, manufacturer);
 	search.add(product3);
 
 	//Object4
@@ -114,7 +119,7 @@ public void loadData(){
 	manufacturer = "Dr. Pepper / Seven-Up Inc.";
 	type= 8;
 	upc = "0078000000382";
-	Product product4 = new Product(productName, manufacturer, type, upc);
+	Product product4 = new Product(upc, productName, type, manufacturer);
 	search.add(product4);
 }
     public Product lookUp(String upc){
