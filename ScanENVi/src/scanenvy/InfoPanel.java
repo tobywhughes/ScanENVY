@@ -1,6 +1,6 @@
 /**
  * Main panel
- * @author Thomas Edwards <010197938, edwards.itj@gmail.com>
+ * @author Thomas Edwards <edwards.itj@gmail.com>
  */
 package scanenvy;
 
@@ -45,7 +45,6 @@ import res.CustomFonts;
 import scanenvy.Shane.Run;
 import scanenvy.Toby.Database;
 
-
 public class InfoPanel extends JPanel{
     private Database data = new Database(); //Changed by Kir
     private Run run;
@@ -59,7 +58,6 @@ public class InfoPanel extends JPanel{
     private static JLabel typeLabel = new JLabel(type);
     private Input input;
     private JTextField upcText;
-    //private Timer timer = new Timer(1000, time());
     
     public InfoPanel(Input input, Product product){
         this.input = input;
@@ -90,8 +88,6 @@ public class InfoPanel extends JPanel{
         panel.setLayout(layout);
         
         panel.setBackground(WHITE);
-        //gbc.anchor = GridBagConstraints.NORTH;
-        //gbc.weighty = 1;
         gbc.ipady =0;
         gbc.ipady = 0;
         gbc.fill = gbc.HORIZONTAL;
@@ -102,7 +98,6 @@ public class InfoPanel extends JPanel{
         
         upcText = new JTextField(product.getUpc());
         upcText.setEditable(false);
-        //upcText.setPreferredSize( new Dimension( 200, 24 ) );
         upcText.setFont(fonts.getCustomFont(CustomFonts.ROBOTO, 16));
         panel.add(upcText, gbc);
         
@@ -126,7 +121,6 @@ public class InfoPanel extends JPanel{
         gbc.gridwidth = 2;
         JTextField manuf = new JTextField(product.getManufact());
         manuf.setEditable(false);
-        //item.setPreferredSize( new Dimension( 200, 24 ) );
         manuf.setFont(fonts.getCustomFont(CustomFonts.ROBOTO, 16));
         panel.add(manuf, gbc);
         
@@ -138,53 +132,41 @@ public class InfoPanel extends JPanel{
         gbc.gridwidth = 2;
         JTextField recycleInfo = new JTextField("Recyclable");
         recycleInfo.setEditable(false);
-        //item.setPreferredSize( new Dimension( 200, 24 ) );
         recycleInfo.setFont(fonts.getCustomFont(CustomFonts.ROBOTO, 16));
         panel.add(recycleInfo, gbc);
-        /*String[] recycleCodes = { "Plastics", "Metal", "Cardboard/Paper", "Glass", "Batteries/Bulbs", "Electronics", "Not Recyclable" };
-        JComboBox recycleBox = new JComboBox(recycleCodes);
-        recycleBox.setEditable(false);
-        //item.setPreferredSize( new Dimension( 200, 24 ) );
-        recycleBox.setFont(fonts.getCustomFont(CustomFonts.ROBOTO, 16));
-        panel.add(recycleBox, gbc);
-        */
         UPC = product.getUpc();
         
-        
         //Changed by Kir
-                int recycle = product.getRType();
-                switch(recycle)
-                {
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                         recycleInfo.setText("Plasitc");
-                        break;
-                    case 8:
-                        recycleInfo.setText("Metal");
-                        break;
-                    case 9:
-                        recycleInfo.setText("Cardboard/Paper");
-                        break;
-                    case 10:
-                        recycleInfo.setText("Glass");
-                        break;
-                    case 11:
-                        recycleInfo.setText("Batteries/Bulbs");
-                        break;
-                    case 12:
-                        recycleInfo.setText("Electronics");
-                        break;
-                    default:
-                        recycleInfo.setText("Not Recyclable");
-                        break;
-                }
-                
-                
-        
+        int recycle = product.getRType();
+        switch(recycle)
+        {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                recycleInfo.setText("Plasitc");
+                break;
+            case 8:
+                recycleInfo.setText("Metal");
+                break;
+            case 9:
+               recycleInfo.setText("Cardboard/Paper");
+                break;
+            case 10:
+                recycleInfo.setText("Glass");
+                break;
+            case 11:
+                recycleInfo.setText("Batteries/Bulbs");
+                break;
+            case 12:
+                recycleInfo.setText("Electronics");
+                break;
+            default:
+                recycleInfo.setText("Not Recyclable");
+                break;
+        }
         gbc.weighty = 1.0;
         gbc.ipady = 0;
         gbc.fill = HORIZONTAL;
@@ -200,7 +182,6 @@ public class InfoPanel extends JPanel{
         button.setBackground(Color.WHITE);
         button.setFocusPainted(false);
         button.setContentAreaFilled(true); 
-       // button.setBorder(new BorderFactory.createEmptyBorder(15, 8, 10, 8));
         panel.add(button, gbc);
         gbc.weighty = 1.0;
         gbc.ipady = 0;
@@ -217,11 +198,7 @@ public class InfoPanel extends JPanel{
         okButton.setBackground(Color.WHITE);
         okButton.setFocusPainted(false);
         okButton.setContentAreaFilled(true); 
-       // button.setBorder(new BorderFactory.createEmptyBorder(15, 8, 10, 8));
         panel.add(okButton, gbc);
-        
-        
-        //panel.setPreferredSize(new Dimension(200, 50));
         return panel;
     }
    
