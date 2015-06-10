@@ -1,2 +1,4 @@
 /ScanENVi/nbproject/private/
 /ScanENVi/build/
+/ScanENVi/dist/
+*.envy

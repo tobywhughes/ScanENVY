@@ -4,11 +4,11 @@
  */
 package scanenvy;
 
-import org.jsoup.*;
 import java.awt.BorderLayout;
 import static java.awt.BorderLayout.CENTER;
 import java.awt.Dimension;
 import static java.awt.Toolkit.getDefaultToolkit;
+import java.io.IOException;
 import static java.lang.Thread.currentThread;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -48,7 +48,7 @@ public class Input extends JFrame{
      * HOME, INFO...
      * @param selection 
      */
-    public void switchViews(int selection){
+    public void switchViews(int selection) throws IOException{
         mainPanel.removeAll();
         switch(selection){
             case 0:{
@@ -84,9 +84,6 @@ public class Input extends JFrame{
     }
     public static void main(String[] args) {
         invokeLater(() -> {
-            //Jsoup Test -- Will only be here for one commit. Just want to check something.
-            Jsoup.parse("");
-            //Actual Code
             JFrame frame = new Input();
             Dimension screenSize = getDefaultToolkit().getScreenSize();
             frame.setBounds(0,40,screenSize.width, screenSize.height -40);

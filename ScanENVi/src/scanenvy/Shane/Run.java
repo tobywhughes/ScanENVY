@@ -10,6 +10,8 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.ArrayList;
 import scanenvy.Product;
+import scanenvy.WebScrape;
+import scanenvy.ScrapeObject;
 
 public class Run {
 ArrayList<Product> list = new ArrayList<Product>();
@@ -19,10 +21,10 @@ ArrayList<Product> search = new ArrayList<Product>();
 
 
 public void run(String upc){
-	boolean isUPC = true;
-	
-	
-	//Check if its an accurate barcode
+        boolean isUPC = true;
+        
+        
+       	//Check if its an accurate barcode
 	//isUPC = check(upc, isUPC);//checks if it contains integers and if its 12 digits
 	
 	String manufacturer; 
@@ -122,21 +124,42 @@ public void loadData(){
 	Product product4 = new Product(upc, productName, type, manufacturer);
 	search.add(product4);
 }
-    public Product lookUp(String upc){
-            Product productTemp = new Product();
-            //check if object scanned has the same UPC as the object searched for
-            System.out.println(search.get(0).getUpc());
-            for(int i=0 ; i<search.size(); i++){
-                    //if so set the name, manufacturer and type of that object search for
-                    //to that product
-                Product product2 = search.get(i);
-                    String upc2 = search.get(i).getUpc();
-                    if(upc.equals(product2.getUpc())){
-                        System.out.println("Inside");
-                        productTemp = search.get(i);
-                    }
-
+    public Product lookUp(String upc) throws IOException{
+            Product product = new Product(upc);
+            //TODO implement database system
+            
+            //Currently ALWAYS returns false since database doesn't exist
+            boolean existsInDatabase = checkDatabase(upc);
+            
+            //If the object isn't in the database, it is created
+            //Currently just a basic system as webscraper is unfinished
+            if(existsInDatabase != true){
+                WebScrape scraper = new WebScrape();
+                ScrapeObject scrapeName = scraper.scrape(upc);
+                product.setName(scrapeName.getName());
             }
-            return productTemp;
+            
+            
+            return product;
     }
+
+
+
+
+/*
+* Temp Methods
+*/
+
+/*
+* Method to stand in for however we decide to check the database.
+* Making this now so I can implement the scraper
+* The actual function is COMPLETELY useless and only
+* being used to give a visual idea of eventual structure of code
+*/
+
+private boolean checkDatabase(String upc){
+    //Returns false since not implemented yet. 
+    return false;
+}
+
 }
