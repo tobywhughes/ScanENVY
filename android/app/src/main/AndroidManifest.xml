@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.skode6.scanenvy" >
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_logo_large"
+        android:launchMode="singleTop"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat.Light"
+        android:windowSoftInputMode="adjustResize|stateHidden">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Base.Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.google.zxing.client.android.SCAN"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.skode6.scanenvy.ProductListActivity"
+            android:label="Product List"
+            android:parentActivityName="com.example.skode6.scanenvy.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.skode6.scanenvy.MainActivity" />
+        </activity>
+        <!--Not Used>
+
+        <activity>
+            android:name=".SearchActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Base.Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"
+                android:value=".SearchActivity"/>
+        </activity>
+        <activity>
+            android:name="com.google.zxing.client.android.CaptureActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.zxing.client.android.SCAN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity-->
+    </application>
+
+</manifest>

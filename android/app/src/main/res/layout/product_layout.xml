@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="180dp"
+    android:layout_gravity="center"
+    card_view:cardCornerRadius="1dp"
+    card_view:cardUseCompatPadding="true"
+    android:paddingBottom="8dp"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    card_view:cardElevation="6dp"
+    android:divider="@null"
+    android:dividerHeight="0dp">
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="32dp">
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="left">
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/fab_upc"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="0dp"
+        android:paddingRight="16dp">
+        <TextView
+            android:id="@+id/product_field"
+            android:gravity="left"
+            android:layout_gravity="left"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Product"
+            android:textColor="@android:color/black"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="0dp"
+        android:paddingRight="16dp"
+        android:layout_marginRight="8dp" >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="left"
+            android:layout_weight="1"
+            android:showDividers="middle"
+            android:layout_gravity="left">
+            <TextView
+                android:gravity="left"
+                android:layout_gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Manufact:"
+                android:textColor="@android:color/black"
+                android:layout_weight="1" />
+            <TextView
+                android:gravity="left"
+                android:layout_gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="UPC:"
+                android:textColor="@android:color/black"
+                android:layout_weight="1"/>
+            <TextView
+                android:gravity="left"
+                android:layout_gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recycle:"
+                android:textColor="@android:color/black"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="right"
+            android:gravity="left">
+            <TextView
+                android:id="@+id/manufact_field"
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Att2"
+                android:textColor="@android:color/black"
+                android:layout_weight="1"
+                android:layout_gravity="left" />
+            <TextView
+                android:id="@+id/upc_field"
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Att2"
+                android:textColor="@android:color/black"
+                android:layout_weight="1"
+                android:layout_gravity="left" />
+            <TextView
+                android:id="@+id/recycle_field"
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Att2"
+                android:textColor="@android:color/black"
+                android:layout_weight="1"
+                android:layout_gravity="left" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="32dp"></LinearLayout>
+
+</LinearLayout>
+</android.support.v7.widget.CardView>
