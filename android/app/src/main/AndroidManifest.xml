@@ -19,14 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.skode6.scanenvy.ProductListActivity"
-            android:label="Product List"
-            android:parentActivityName="com.example.skode6.scanenvy.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.skode6.scanenvy.MainActivity" />
-        </activity>
         <!--Not Used>
 
         <activity>
