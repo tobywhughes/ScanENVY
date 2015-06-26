@@ -11,7 +11,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-        <ListView
+        <android.support.v7.widget.RecyclerView
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/list"
@@ -20,7 +20,7 @@
 
             android:divider="@null"
             android:dividerHeight="0dp">
-        </ListView>
+        </android.support.v7.widget.RecyclerView>
          <com.github.alexkolpa.fabtoolbar.FabToolbar
              android:id="@+id/fab_toolbar"
              android:layout_width="match_parent"

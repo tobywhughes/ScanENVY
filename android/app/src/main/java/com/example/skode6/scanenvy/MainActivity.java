@@ -6,6 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.internal.widget.AdapterViewCompat;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -29,13 +35,14 @@ import com.github.alexkolpa.fabtoolbar.FabToolbar;
 //import me.drakeet.materialdialog;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     public final static String EXTRA_MESSAGE = "com.example.edwardsitj.myapplication.MESSAGE";
     protected FabToolbar fabToolbar;
     protected Toolbar toolbar;
-    protected ListView lv;
+    protected RecyclerView lv;
     // Class
     protected Run run = new Run();
     //Class
@@ -106,13 +113,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         toolbar.inflateMenu(R.menu.menu_main);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //getSupportActionBar().setIcon(R.drawable.ic_logo_large);
-        //getSupportActionBar().setLogo(R.drawable.ic_logo_large);
     }
     private void setListView(){
-        lv = (ListView) findViewById(R.id.list);
+        lv = (RecyclerView) findViewById(R.id.list);
+        lv.setHasFixedSize(true);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        lv.setLayoutManager(llm);
         adapter = new ProductAdapter(this, generateData());
-
         lv.setAdapter(adapter);
     }
 
@@ -175,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    private ArrayList<Product> generateData(){
+    private List<Product> generateData(){
         run.loadData();
         ArrayList<Product> items = run.getProductList();
         String productName = "Coca-Cola";

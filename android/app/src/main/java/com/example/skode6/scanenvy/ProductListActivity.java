@@ -4,6 +4,8 @@ import android.app.ListActivity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 /**
  * Created by TJ on 6/25/2015.
  */
-public class ProductListActivity extends ListFragment {
+public class ProductListActivity extends ListActivity {
     protected Run run = new Run();
     protected ListView lv;
 
@@ -34,17 +36,18 @@ public class ProductListActivity extends ListFragment {
         setListView();
        // setContentView(findViewById(R.id.list));
     }
-    @Override
+    //@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setListView();
         //return inflater.inflate(container, false);
         return null;
     }
     private void setListView(){
-        lv = getListView();
-        ProductAdapter adapter = new ProductAdapter(this.getActivity(), generateData());
-
-        lv.setAdapter(adapter);
+        RecyclerView recList = (RecyclerView) findViewById(R.id.list);
+        recList.setHasFixedSize(true);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
     }
     private ArrayList<Product> generateData(){
         run.loadData();
