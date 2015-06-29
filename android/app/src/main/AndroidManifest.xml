@@ -19,6 +19,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.skode6.scanenvy.ProductCardActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="com.example.skode6.scanenvy.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.skode6.scanenvy.MainActivity" />
+        </activity>
         <!--Not Used>
 
         <activity>

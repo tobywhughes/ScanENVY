@@ -10,8 +10,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 public class Run {
-	ArrayList<Product> list = new ArrayList<Product>();
-	ArrayList<Product> search = new ArrayList<Product>();
+	private static ArrayList<Product> list = new ArrayList<Product>();
 
 	public void run(String upc) {
 		boolean isUPC = true;
@@ -32,6 +31,10 @@ public class Run {
 
 	public ArrayList<Product> getProductList() {
 		loadData();
+		return list;
+	}
+	public ArrayList<Product> addProduct(Product product) {
+		list.add(product);
 		return list;
 	}
 
@@ -64,7 +67,8 @@ public class Run {
 		return tempManufacturer;
 	}
 
-	public void loadData() {
+	public ArrayList<Product> loadData() {
+		ArrayList<Product> search = new ArrayList<Product>();
 		String productName = "Coca-Cola";
 		String manufacturer = "The Coca-Cola Company";
 		int type = 8;
@@ -97,6 +101,8 @@ public class Run {
 		upc = "0078000000382";
 		Product product4 = new Product(upc, productName, type, manufacturer);
 		search.add(product4);
+		list.addAll(search);
+		return search;
 	}
 
 	public Product lookUp(String upc) throws IOException {

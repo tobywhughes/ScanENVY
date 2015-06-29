@@ -1,12 +1,18 @@
 package com.example.skode6.scanenvy.backend;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Class that holds information about a specific product
  * 
  * @version 6/2/15
  */
-public class Product implements java.io.Serializable
+public class Product implements Serializable
 {
+    private int mData;
     private String upc;
     private String name;
     private String manuId;

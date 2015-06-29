@@ -53,17 +53,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "com.example.inappbilling";
     private IabHelper.OnIabPurchaseFinishedListener mPurchaseFinishedListener;
     protected ProductAdapter adapter;
+    private static List<Product> productList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //ProductListActivity productList = new ProductListActivity();
+
         setContentView(R.layout.main);
-        setListView();
-        //ProductListActivity productList = new ProductListActivity();
-        //Intent listIntent = new Intent(this, ProductListActivity.class);
-        //listIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        //startActivity(listIntent);
+        if (savedInstanceState != null) {
+            try{
+                ArrayList myArrayList = (ArrayList)getLastNonConfigurationInstance();
+            } catch(NullPointerException e) {
+                List<Product> values = new ArrayList<Product>();
+                for (int i = 0; i < productList.size(); i++) {
+                    values.add((Product) savedInstanceState.getSerializable("product" + i));
+                }
+                if (values != null) {
+                    lv = (RecyclerView) findViewById(R.id.list);
+                    lv.setHasFixedSize(false);
+                    LinearLayoutManager llm = new LinearLayoutManager(this);
+                    lv.setLayoutManager(llm);
+                    adapter = new ProductAdapter(this, values);
+                    lv.setAdapter(adapter);
+                }
+            }
+        }
+        else {
+            productList = run.getProductList();
+            setListView();
+        }
         setToolBar();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         dialog = enterDialog(edit = new EditText(this));
@@ -116,14 +134,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void setListView(){
         lv = (RecyclerView) findViewById(R.id.list);
-        lv.setHasFixedSize(true);
+        lv.setHasFixedSize(false);
         LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+       // llm.setOrientation(LinearLayoutManager.);
         lv.setLayoutManager(llm);
-        adapter = new ProductAdapter(this, generateData());
+        adapter = new ProductAdapter(this, productList);
         lv.setAdapter(adapter);
     }
+    public void onSaveInstanceState(Bundle savedState) {
 
+        super.onSaveInstanceState(savedState);
+
+        // Note: getValues() is a method in your ArrayAdaptor subclass
+        List<Product> values = adapter.getValues();
+        for (int i = 0; i < values.size(); i++){
+            savedState.putSerializable("product"+i, values.get(i));
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -184,42 +211,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private List<Product> generateData(){
-        run.loadData();
-        ArrayList<Product> items = run.getProductList();
-        String productName = "Coca-Cola";
-        String manufacturer = "The Coca-Cola Company";
-        int type = 8;
-        String upc = "0049000006346";
-        Product product = new Product(upc, productName, type, manufacturer);
-        items.add(product);
+        List<Product> list = run.loadData();
 
-
-        //object2
-        productName = "Dr. Pepper";
-        manufacturer = "Dr. Pepper / Seven-Up Inc";
-        type= 8;
-        upc = "0078000003154";
-        Product product2 = new Product(upc, productName, type, manufacturer);
-        items.add(product2);
-
-
-        //object3
-        productName = "Kirkland Signature Purified Drinking Water";
-        manufacturer = "Kirkland";
-        type= 1;
-        upc = "0096619756803";
-        Product product3 = new Product(upc, productName, type, manufacturer);
-        items.add(product3);
-
-        //Object4
-        productName = "7up Diversion Safe";
-        manufacturer = "Dr. Pepper / Seven-Up Inc.";
-        type= 8;
-        upc = "0078000000382";
-        Product product4 = new Product(upc, productName, type, manufacturer);
-        items.add(product4);
-
-        return items;
+        return list;
     }
 
     public void faderClicked(View v){
@@ -252,6 +246,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 try {
                     adapter.add(product);
+                    //run.addProduct(product);
                 }
                 catch (Exception e2){
                     Toast error = Toast.makeText(getApplicationContext(), "Couldn't add" + contents, Toast.LENGTH_LONG);
@@ -292,7 +287,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onClick(DialogInterface dialog, int which) {
                         String upc = edit.getText().toString();
                         try {
-                            adapter.add(run.lookUp(upc));
+                            Product p = run.lookUp(upc);
+                            adapter.add(p);
+                            //run.addProduct(p);
                         }
                         catch (IOException e) {
                             Toast error = Toast.makeText(getApplicationContext(), "Couldn't find" + upc, Toast.LENGTH_LONG);
