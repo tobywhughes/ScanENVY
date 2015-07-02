@@ -2,7 +2,7 @@ package res;
 
 /**
  * Custom Fonts
- * @author Thomas Edwards <010197938, edwards.itj@gmail.com>
+ * @author Thomas Edwards <edwards.itj@gmail.com>
  */
 
 import java.awt.Color;
@@ -63,7 +63,8 @@ public class CustomFonts{
      * 
      * @param font
      * @param color
-     * @return 
+     * @return BufferedImage - of the fontname styled in its own font
+     * Good for a selection menu of fonts
      */
     public BufferedImage getFontImage(java.awt.Font font, Color color){
         BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
@@ -87,6 +88,14 @@ public class CustomFonts{
         g2d.drawString(font.getFontName(), 0, fontMetrics.getAscent());
         return image;
     }
+    /**
+     * Input font, string, and color
+     * and get back an image with all of the attributes
+     * @param font Font - font of the text to be fonted
+     * @param str String - text input to be fonted
+     * @param color Color - color of text to be fonted
+     * @return BufferedImage - of the text in font and color style specified
+     */
     public BufferedImage getTextFonted(java.awt.Font font, String str, Color color){
         BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = image.createGraphics();
