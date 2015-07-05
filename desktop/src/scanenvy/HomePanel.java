@@ -238,7 +238,11 @@ public class HomePanel extends JPanel{
             public void actionPerformed(ActionEvent e) {
                 UPC = textBox.getText();
                 run.run(UPC);//Changed by Kir
-                input.switchViews(Input.INFO);
+                try {
+                    input.switchViews(Input.INFO);
+                } catch (IOException ex) {
+                    Logger.getLogger(HomePanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 upcImage = null;
                 upcLabel.setIcon(null);
                 repaint();

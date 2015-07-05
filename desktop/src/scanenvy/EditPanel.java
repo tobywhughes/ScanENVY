@@ -284,7 +284,11 @@ public class EditPanel extends JPanel{
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                input.switchViews(Input.INFO);
+                try {
+                    input.switchViews(Input.INFO);
+                } catch (IOException ex) {
+                    Logger.getLogger(EditPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
         return al;

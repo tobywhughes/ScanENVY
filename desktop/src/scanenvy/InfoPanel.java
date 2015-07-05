@@ -206,7 +206,11 @@ public class InfoPanel extends JPanel{
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                input.switchViews(Input.EDIT);
+                try {
+                    input.switchViews(Input.EDIT);
+                } catch (IOException ex) {
+                    Logger.getLogger(InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
             }
         };
@@ -218,7 +222,11 @@ public class InfoPanel extends JPanel{
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                input.switchViews(Input.HOME);
+                try {
+                    input.switchViews(Input.HOME);
+                } catch (IOException ex) {
+                    Logger.getLogger(InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
         return al;
